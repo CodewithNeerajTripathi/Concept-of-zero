@@ -1,0 +1,389 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main content */
+.main-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.tree-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Birds */
+.birds {
+  position: absolute;
+  z-index: 1;
+  width: 15vw;
+  height: auto;
+  cursor: pointer;
+  top: 0;
+  left: -20vw;
+  transition: transform 0.2s ease;
+}
+
+
+#mute-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(10, 94, 94, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+#mute-btn:hover {
+  background: rgb(25, 138, 153);
+}
+
+#image2.show {
+  display: block !important;
+  transform: translate(-50%, -50%) scale(5);
+  opacity: 1;
+}
+
+#image1.show {
+  display: block !important;
+  transform: translate(-50%, -50%) scale(5);
+  opacity: 1;
+}
+
+#image0.show {
+  display: block !important;
+  transform: translate(-50%, -50%) scale(5);
+  opacity: 1;
+}
+
+/* End Screen Styles */
+.end-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #577f58 0%, #764ba2 100%);
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 2000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.end-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.end-subtitle {
+  font-size: 24px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.3s backwards;
+  font-weight: 300;
+}
+
+.end-button {
+  padding: 20px 50px;
+  font-size: 22px;
+  font-weight: bold;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease 0.6s backwards;
+}
+
+.end-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.end-button:active {
+  transform: scale(1.05);
+}
+
+.end-redirect-text {
+  margin-top: 30px;
+  font-size: 16px;
+  opacity: 0.7;
+  animation: fadeInUp 1s ease 0.9s backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Home Button */
+#home-btn {
+  position: fixed;
+  top: 23px;
+  left: 40px;
+  padding: 10px 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgb(227, 231, 234);
+  background: linear-gradient(135deg, #3bc5cf, #086962);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 128, 0, 0.4);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#home-btn:hover {
+  background: linear-gradient(135deg, #b8ebb8, #1e8c3a);
+  transform: scale(1.07);
+  box-shadow: 0 6px 14px rgba(0, 128, 0, 0.5);
+}
+
+#home-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 128, 0, 0.4);
+}
+
+/* Subtitle Styles */
+.subtitle {
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(1.5);
+  opacity: 0;
+  transition: all 1s ease;
+  z-index: 999;
+  max-width: 80%;
+  pointer-events: none;
+}
+
+
+#pressBirdsImg {
+  display: none;
+  width: 40vw;
+  position: absolute;
+  top: 5%;
+  left: 75%;
+  transform: translateX(-50%) scale(0.5);
+  opacity: 0;
+  z-index: 999;
+  pointer-events: none;
+                         /* Added green border */
+  border-radius: 10px;       /* Optional: thoda rounded corners */
+  transition: all 0.5s ease;
+
+  /* Pulse animation */
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(0.5); }
+  50% { transform: translateX(-50%) scale(0.6); }
+  100% { transform: translateX(-50%) scale(0.5); }
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN - Mobile & Tablet
+===================================================== */
+
+/* Tablet (Portrait & Landscape) - 768px to 1024px */
+@media (max-width: 1100px) and (min-width: 700px)
+ {
+ .birds { 
+ width: 22vw !important;
+    top: 210px !important;
+  
+}
+
+
+  
+  #mute-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+  
+  #home-btn {
+    top: 18px;
+    left: 30px;
+    padding: 6px 8px ;
+    font-size: 15px;
+  }
+  
+  .subtitle {
+    bottom: 15px;
+    max-width: 30%;
+  }
+  
+  #image0, #image1, #image2 {
+    width: 180px !important;
+    top: 45% !important;
+    left: 65% !important;
+  }
+  
+  #pressBirdsImg {
+    top: 8%;
+    transform: translateX(-50%) scale(0.4);
+    max-width: 30%;
+  }
+}
+
+/* Mobile (Landscape) - 480px to 767px */
+@media (max-width: 1000px) and (min-width: 300px) and (orientation: landscape) {
+  .birds { 
+    width: 22vw;
+    top: 17% !important;
+  }
+  
+  #mute-btn {
+    top: 12px;
+    right: 12px;
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+  
+  #home-btn {
+    top: 15px;
+    left: 20px;
+    padding: 4px 8px;
+    font-size: 14px;
+    border-radius: 15px;
+  }
+  
+  .subtitle {
+    bottom: 10px;
+    max-width: 50%;
+  }
+  
+  #image0, #image1, #image2 {
+    width: 150px !important;
+    top: 50% !important;
+    left: 70% !important;
+  }
+  
+  #pressBirdsImg {
+    top: 5%;
+    transform: translateX(-50%) scale(0.35);
+  
+  }
+  
+  .end-title {
+    font-size: 36px;
+  }
+  
+  .end-subtitle {
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+  
+  .end-button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+}
+
+/* Small Mobile (Landscape) - Below 480px */
+@media (max-width: 500px) and (orientation: landscape) {
+  .birds { 
+    width: 28vw;
+    bottom: 50% !important;
+  }
+  
+  #mute-btn {
+    top: 10px;
+    right: 10px;
+    padding: 5px 8px;
+    font-size: 14px;
+  }
+  
+  #home-btn {
+    top: 12px;
+    left: 15px;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+  
+  .subtitle {
+    bottom: 8px;
+    max-width: 95%;
+  }
+  
+  #image0, #image1, #image2 {
+    width: 120px !important;
+    top: 50% !important;
+    left: 70% !important;
+  }
+  
+  #pressBirdsImg {
+    top: 3%;
+    transform: translateX(-50%) scale(0.3);
+  }
+  
+  #rotate-message {
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+  
+  .end-title {
+    font-size: 28px;
+  }
+  
+  .end-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .end-button {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  
+  .end-redirect-text {
+    font-size: 12px;
+  }
+}
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="entry.css">
+</head>
+<body>
+  <div id="rotate-message">📱 Please rotate your phone to continue</div>
+    <div class="bg">
+       <div class="square-box">
+  </div>
+
+  <video autoplay muted loop playsinline id="bg-video">
+      <source src="./concept of zero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <button class="play-btn"  onclick="goToPage()"><img src="./START BUTTON@2x.png" alt=""></button>
+
+    </div>
+</body>
+<script>
+  
+    const rotateMsg = document.getElementById("rotate-message");
+const mainContent = document.querySelector(".bg");
+
+function checkOrientation() {
+  const isLandscape = window.innerWidth > window.innerHeight;
+
+  if (isLandscape) {
+    rotateMsg.style.display = "none";
+    mainContent.classList.remove("disabled");
+  } else {
+    rotateMsg.style.display = "flex";
+    mainContent.classList.add("disabled");
+  }
+}
+
+// Initial check
+checkOrientation();
+
+// Listen for resize or orientation change
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
+
+function goToPage() {
+  window.location.href = "./Main-Page/main.html"; // replace with your page
+}
+
+</script>
+</html>

@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.bg {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./BG.jpg);
+  background-size: cover;               /* 👈 desktop me full width */
+  background-position: center center;
+  background-repeat: no-repeat;
+ 
+  position: relative;
+  overflow: hidden;
+}
+
+
+#bg-video{
+  width: 70vw;
+  height: 60vh;
+   float: right;
+   margin-right: 5%;
+
+}
+#bg-video source{
+   float: right;
+}
+/* =======================
+   Square Box Animation
+======================= */
+.square-box {
+  width: 30vw;
+  max-width: 400px;
+  aspect-ratio: 2 / 3;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: riseUp 2s ease-out forwards;
+}
+
+@keyframes riseUp {
+  0% {
+    bottom: -100%;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+/* =======================
+   PLAY BUTTON STYLE
+======================= */
+.play-btn {
+  position: absolute;
+  top: 60%;
+  right: 34%;
+  transform: translateY(-50%) scale(0);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1000;
+  animation: scaleIn 1s ease-out forwards, floatAnim 3s ease-in-out 1s infinite;
+}
+
+/* Button Image */
+.play-btn img {
+  width: 220px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 255, 0, 0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover Effect */
+.play-btn:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 6px 14px rgba(0, 255, 0, 0.6));
+}
+
+/* Active Effect */
+.play-btn:active img {
+  transform: scale(0.95);
+}
+
+/* =======================
+   SCALE-IN ANIMATION
+======================= */
+@keyframes scaleIn {
+  0% {
+    transform: translateY(-50%) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* =======================
+   FLOAT / HILNA ANIMATION
+======================= */
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(calc(-50% - 8px)) scale(1.03);
+  }
+}
+
+/* =======================
+   RESPONSIVE DESIGN
+======================= */
+@media (max-width: 1100px) and (min-width: 700px) {
+ bg{
+    background-size: contain;
+    height: 100vh;
+  }
+  .square-box {
+    width: 40vw;
+  }
+
+  .play-btn img {
+    width: 120px;
+  }
+
+  .play-btn {
+    right: 33%;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 400px) {
+  
+  .square-box {
+    width: 50vw;
+  }
+
+  .play-btn img {
+    width: 120px;
+  }
+
+  .play-btn {
+    right: 10%;
+    top: 65%;
+  }
+}
+
+@media (max-width: 480px) {
+  .square-box {
+    width: 60vw;
+  }
+
+  .play-btn img {
+    width: 100px;
+  }
+
+  .play-btn {
+    right: 5%;
+    top: 70%;
+  }
+}
+
+ #rotate-message {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 9999;
+    padding: 20px;
+    flex-direction: column;
+  }
+
+  /* Main content hidden initially */
+  .bg.disabled {
+    display: none !important;
+    pointer-events: none !important;
+  }
