@@ -3,120 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Bird Animation</title>
+  <title>Concept-Of-Zero</title>
  
 </head>
 <body>
- 
-  <div class="main-page">
+   <div class="main-page">
     <img src="./Artboard 1.png" alt="Tree" class="tree-img">
-    <img id="birds1" class="birds" src="../Bird_Fly_off_alpha/Bird_Fly_off_00130.png" alt="Bird 1"> 
-    <img id="birds2" class="birds" src="../Bird_Fly_off_alpha/Bird_Fly_off_00130.png" alt="Bird 2"> 
+    <img id="birds1" class="birds" src="../Bird_Fly_off_alpha/Bird Fly off_00020.png" alt="Bird 1">
+    <img id="birds2" class="birds" src="../Bird_Fly_off_alpha/Bird Fly off_00020.png" alt="Bird 2">
 
-    <!-- Background music -->
     <audio id="bg-music" loop>
       <source src="./assets/sounds/background-music.mp3" type="audio/mpeg">
     </audio>
-     <button id="mute-btn">🔊</button>
-      
-  <button id="home-btn">Home</button>
+    <button id="mute-btn">🔊</button>
+    <button id="home-btn">Home</button>
 
-  
-  
+    <div id="home-confirm" style="
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    ">
+      <div style="
+        background: #fff;
+        padding: 30px 50px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        max-width: 300px;
+        width: 80%;
+      ">
+        <p style="font-size: 18px; margin-bottom: 20px;">Are you sure?</p>
+        <button id="home-yes" style="padding: 8px 20px; margin-right: 15px; font-size: 16px; cursor: pointer;">Yes</button>
+        <button id="home-no" style="padding: 8px 20px; font-size: 16px; cursor: pointer;">No</button>
+      </div>
+    </div>
 
+    <img id="subtitle0" src="../Test/Text00.png" alt="" class="subtitle">
+    <img id="subtitle1" src="../Test/Text01.png" alt="" class="subtitle">
+    <img id="subtitle2" src="../Test/Text02.png" alt="" class="subtitle">
+    <img id="subtitle3" src="../Test/Text03.png" alt="" class="subtitle">
+    <img id="subtitle4" src="../Test/Text04.png" alt="" class="subtitle">
+    <img id="subtitle5" src="../Test/Text05.png" alt="" class="subtitle">
+    <img id="subtitle6" src="../Test/Text06.png" alt="" class="subtitle">
+    <img id="subtitle7" src="../Test/Text07.png" alt="" class="subtitle">
+    <img id="subtitle8" src="../Test/Text08.png" alt="" class="subtitle">
+    <img id="subtitle9" src="../Test/Text09.png" alt="" class="subtitle">
+    <img id="subtitle10" src="../Test/Text10.png" alt="" class="subtitle">
 
+    <img id="image0" src="../numbers/0@2x.png" alt="Image 0">
+    <img id="image1" src="../numbers/1@2x.png" alt="Image 1">
+    <img id="image2" src="../numbers/2@2x.png" alt="Image 2">
 
+    <img id="pressBirdsImg" src="./Cloud text.png" alt="Press the Birds">
 
-
-<!-- Home Confirmation Modal -->
-<div id="home-confirm" style="
-  display: none;
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-">
-  <div style="
-    background: #fff;
-    padding: 30px 50px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    max-width: 300px;
-    width: 80%;
-  ">
-    <p style="font-size: 18px; margin-bottom: 20px;">Are you sure?</p>
-    <button id="home-yes" style="
-      padding: 8px 20px;
-      margin-right: 15px;
-      font-size: 16px;
-      cursor: pointer;
-    ">Yes</button>
-    <button id="home-no" style="
-      padding: 8px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    ">No</button>
+    <div id="end-screen" class="end-screen">
+      <h1 class="end-title">✨ Thank You! ✨</h1>
+      <p class="end-subtitle">Experience Complete</p>
+      <button id="end-btn" class="end-button">Continue →</button>
+      <p class="end-redirect-text">Redirecting automatically in 5 seconds...</p>
+    </div>
   </div>
-</div>
-
-
-<!-- Add inside .main-page ya body -->
-<img id="subtitle0" src="../Test/Text00.png" alt="" class="subtitle">
-<img id="subtitle1" src="../Test/Text01.png" alt="" class="subtitle">
-<img id="subtitle2" src="../Test/Text02.png" alt="" class="subtitle">
-<img id="subtitle3" src="../Test/Text03.png" alt="" class="subtitle">
-<img id="subtitle4" src="../Test/Text04.png" alt="" class="subtitle">
-<img id="subtitle5" src="../Test/Text05.png" alt="" class="subtitle">
-<img id="subtitle6" src="../Test/Text06.png" alt="" class="subtitle">
-<img id="subtitle7" src="../Test/Text07.png" alt="" class="subtitle">
-<img id="subtitle8" src="../Test/Text08.png" alt="" class="subtitle">
-<img id="subtitle9" src="../Test/Text09.png" alt="" class="subtitle">
-<img id="subtitle10" src="../Test/Text10.png" alt="" class="subtitle">
-
-
-
-
-    <!-- Click sequence audios -->
-    <audio id="audio1" src="../draft_audio/1.mp3"></audio>
-    <audio id="audio2" src="../draft_audio/2.mp3"></audio>
-    <audio id="audio3" src="../draft_audio/3.mp3"></audio>
-    <audio id="audio4" src="../draft_audio/4.mp3"></audio>
-    <audio id="audio5" src="../draft_audio/5.mp3"></audio>
-    <audio id="audio6" src="../draft_audio/6.mp3"></audio>
-    <audio id="audio7" src="../draft_audio/7.mp3"></audio>
-    <audio id="audio8" src="../draft_audio/8.mp3"></audio>
-    <audio id="audio9" src="../draft_audio/Bird_Call_1.wav"></audio>
-    <audio id="audio10" src="../draft_audio/Bird_Misc_01.wav"></audio>
-    <audio id="audio11" src="../draft_audio/Bird_Take_Off.mp3"></audio>
-
-    <img id="image2" src="../numbers/2@2x.png" alt="Audio 1 Image" style="display:none; position:absolute; top:50%; left:70%; transform:translate(-50%, -50%) scale(0.2); transition:all 1s ease; width:230px; z-index:999;">
-    <img id="image1" src="../numbers/1@2x.png" alt="Audio 1 Image" style="display:none; position:absolute; top:50%; left:70%; transform:translate(-50%, -50%) scale(0.2); transition:all 1s ease; width:230px; z-index:999;">
-    <img id="image0" src="../numbers/0@2x.png" alt="Audio 1 Image" style="display:none; position:absolute; top:50%; left:70%; transform:translate(-50%, -50%) scale(0.2); transition:all 1s ease; width:230px; z-index:999;">
-
-  </div>
-
- <img id="pressBirdsImg" src="./Cloud text.png" alt="Press the Birds" >
-  
-
-  <!-- End Screen - Add this inside your .main-page div, before closing </div> -->
-<div id="end-screen" class="end-screen">
-  <h1 class="end-title">✨ Thank You! ✨</h1>
-  
-  <p class="end-subtitle">Experience Complete</p>
-  
-  <button id="end-btn" class="end-button">
-    Continue →
-  </button>
-  
-  <p class="end-redirect-text">
-    Redirecting automatically in 5 seconds...
-  </p>
-</div> 
-
- 
  <link rel="stylesheet" href="style.css">
   <script src="script.js">
 
