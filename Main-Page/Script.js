@@ -16,15 +16,15 @@ try {
 }
 
 const audios = [
-  new Audio("../draft_audio/1.mp3"),
-  new Audio("../draft_audio/2.mp3"),
-  new Audio("../draft_audio/3.mp3"),
-  new Audio("../draft_audio/4.mp3"),
-  new Audio("../draft_audio/5.mp3"),
-  new Audio("../draft_audio/6.mp3"),
-  new Audio("../draft_audio/7.mp3"),
-  new Audio("../draft_audio/8.mp3"),
-  new Audio("../draft_audio/Bird_Misc_01.wav")
+  new Audio("./draft_audio/1.mp3"),
+  new Audio("./draft_audio/2.mp3"),
+  new Audio("./draft_audio/3.mp3"),
+  new Audio("./draft_audio/4.mp3"),
+  new Audio("./draft_audio/5.mp3"),
+  new Audio("./draft_audio/6.mp3"),
+  new Audio("./draft_audio/7.mp3"),
+  new Audio("./draft_audio/8.mp3"),
+  new Audio("./draft_audio/Bird_Misc_01.wav")
 ];
 
 audios.forEach((audio, index) => {
@@ -169,7 +169,7 @@ async function preloadImages() {
   // Fly away frames
   for (let i = config.flyAwayEndFrame; i <= config.flyAwayStartFrame; i++) {
     const key = `fly_${i}`;
-    const src = `../BirdFlyOff/BirdFlyOff_${padFrame(i)}.png`;
+    const src = `./BirdFlyOff/BirdFlyOff_${padFrame(i)}.png`;
     const img = new Image();
     img.src = src;
     imageCache[key] = img;
@@ -190,7 +190,7 @@ async function preloadImages() {
   // Idle frames
   for (let i = 0; i < config.idleFrames; i++) {
     const key = `idle_${i}`;
-    const src = `../BirdIdole/BirdIdole_${padFrame(i)}.png`;
+    const src = `./BirdIdole/BirdIdole_${padFrame(i)}.png`;
     const img = new Image();
     img.src = src;
     imageCache[key] = img;
@@ -350,7 +350,7 @@ function animateBird(bird, birdIndex) {
       const spriteFrame = Math.round(startFrame - (startFrame - endFrame) * progress);
       const cacheKey = `fly_${spriteFrame}`;
       const cachedImg = imageCache[cacheKey];
-      bird.src = cachedImg ? cachedImg.src : `../BirdFlyOff/BirdFlyOff_${padFrame(spriteFrame)}.png`;
+      bird.src = cachedImg ? cachedImg.src : `./BirdFlyOff/BirdFlyOff_${padFrame(spriteFrame)}.png`;
 
       flyFrame--;
       const animId = requestAnimationFrame(flyIn);
@@ -370,7 +370,7 @@ function animateBird(bird, birdIndex) {
       if (elapsed >= 1000 / config.idleFPS) {
         const cacheKey = `idle_${idleFrame}`;
         const cachedImg = imageCache[cacheKey];
-        bird.src = cachedImg ? cachedImg.src : `../BirdIdole/BirdIdole_${padFrame(idleFrame)}.png`;
+        bird.src = cachedImg ? cachedImg.src : `./BirdIdole/BirdIdole_${padFrame(idleFrame)}.png`;
         idleFrame = (idleFrame + 1) % config.idleFrames;
         lastTime = time;
       }
@@ -448,7 +448,7 @@ function animateBird(bird, birdIndex) {
           const frameNum = Math.max(config.flyAwayEndFrame, currentFrame);
           const cacheKey = `fly_${frameNum}`;
           const cachedImg = imageCache[cacheKey];
-          bird.src = cachedImg ? cachedImg.src : `../BirdFlyOff/BirdFlyOff_${padFrame(frameNum)}.png`;
+          bird.src = cachedImg ? cachedImg.src : `./BirdFlyOff/BirdFlyOff_${padFrame(frameNum)}.png`;
           lastTime = time;
         }
         currentStep++;
@@ -487,8 +487,17 @@ function goToNextPage() { window.location.href = "../index.html"; }
 
 // ==================== IMAGE EVENTS ====================
 function setupImageEvents() {
-  audios[0].addEventListener("play", () => showImage(img2, 100), { once: true });
-  audios[0].addEventListener("ended", () => { hideImage(img2, 800); firstBirdEnabled = true; }, { once: true });
+  // Enable first bird after audio[0] ends
+  audios[0].addEventListener("ended", () => { firstBirdEnabled = true; }, { once: true });
+
+  // ⭐ FIXED: img2 shows when subtitle1 appears (during audio[0])
+  audios[0].addEventListener("play", () => {
+    setTimeout(() => {
+      showImage(img2, 100);
+    }, 1800); // 0.3s late (1500ms + 300ms = 1800ms)
+  }, { once: true });
+  
+  audios[0].addEventListener("ended", () => hideImage(img2, 800), { once: true });
 
   audios[3].addEventListener("play", () => showImage(img1, 100), { once: true });
   audios[3].addEventListener("ended", () => hideImage(img1, 800), { once: true });
@@ -786,8 +795,6 @@ const hidePressImage = () => {
     console.log("✅ Press image hidden");
   }, 500);
 };
-
-// ⭐ PRESS BIRDS IMAGE - LISTENERS REMOVED (handled in animateBird now)
 
 // Show press image when audio0 ends
 if (audios[0]) {
