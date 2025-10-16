@@ -124,6 +124,25 @@
 /* =======================
    RESPONSIVE DESIGN
 ======================= */
+
+@media (max-width: 1300px) and (min-width: 1100px) {
+ bg{
+    background-size: contain;
+    height: 100vh;
+  }
+  .square-box {
+    width: 40vw;
+  }
+
+  .play-btn img {
+    width: 190px;
+  }
+
+  .play-btn {
+    right: 33%;
+  }
+}
+
 @media (max-width: 1100px) and (min-width: 700px) {
  bg{
     background-size: contain;

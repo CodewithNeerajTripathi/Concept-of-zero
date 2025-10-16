@@ -276,10 +276,10 @@ body {
 /* ==================== MEDIA QUERIES ==================== */
 
 /* Tablet Landscape (1024px - 1400px) */
-@media (max-width: 1400px) and (min-width: 1024px) {
+@media (max-width: 1400px) and (min-width: 1300px) {
   .birds {
-    width: 21vw !important;
-    top: 28% !important;
+    width: 23vw !important;
+    top: 10% !important;
   }
 
   #mute-btn {
@@ -315,6 +315,50 @@ body {
     max-width: 60%;
   }
 }
+
+
+
+/* Tablet Landscape (1024px - 1200px) */
+@media (max-width: 1300px) and (min-width: 1100px) {
+  .birds {
+    width: 23vw !important;
+    top: 16% !important;
+  }
+
+  #mute-btn {
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    font-size: 18px;
+  }
+
+  #home-btn {
+    top: 18px;
+    left: 30px;
+    padding: 6px 8px;
+    font-size: 15px;
+  }
+
+  .subtitle {
+    bottom: 15px;
+    max-width: 70%;
+  }
+
+  #image0,
+  #image1,
+  #image2 {
+    width: 25vw !important;
+    top: 55% !important;
+    left: 65% !important;
+  }
+
+  #pressBirdsImg {
+    top: 10%;
+    transform: translateX(-50%) scale(0.4);
+    max-width: 60%;
+  }
+}
+
 
 /* Tablet (900px - 1024px) */
 @media (max-width: 1022px) and (min-width: 900px) {

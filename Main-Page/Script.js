@@ -88,8 +88,8 @@ const branchPositions = {
     branch2: { left: 0.26, top: 0.26, size: 0.18 }
   },
   desktop: {
-    branch1: { left: 0.36, top: 0.187, size: 0.20 },
-    branch2: { left: 0.25, top: 0.22, size: 0.20 }
+    branch1: { left: 0.33, top: 0.187, size: 0.20 },
+    branch2: { left: 0.24, top: 0.22, size: 0.20 }
   },
   large: {
     branch1: { left: 0.34, top: 0.18, size: 0.22 },
